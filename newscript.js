@@ -8,7 +8,6 @@ var frequentFeelings = {};
 
 //initialize map
 function initMap() {
-  console.log('initial');
   geocoder = new google.maps.Geocoder();  map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
     center: centerPoint,
@@ -34,20 +33,15 @@ function formValidation(event) {
     alert('nice try');
   }
   else {
-    console.log('else');
-    // var url = 'index.html?userCity=' + userCity + '&userState=' + userState + '#map';
     window.location.assign('#map');
     map.center = codeAddress();
     map.zoom = 8;
-    console.log(userCity, userState);
-    // google.maps.event.trigger(map, 'resize');
     wffRequest();
   }
 }
 
 //gets lat/lon from user input
 function codeAddress() {
-  console.log(userCity, userState);
   var address = userCity + userState;
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == 'OK') {
@@ -63,32 +57,33 @@ function codeAddress() {
     }
   });
 }
+
 //make circles
 function createCircles() {
   for(i = 0; i < 3; i++) {
     var cityCircle = new google.maps.Circle({
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35,
-        map: map,
-        center: map.center,
-        radius: 100000
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      map: map,
+      center: map.center,
+      radius: 100000
     });
   }
 }
 
 //we feel fine data request
 function wffRequest() {
-var parser;
-var xmlDoc;
-var $xhr;
-      $xhr = $.get('https://g-wefeelfine.herokuapp.com/ShowFeelings?display=xml&returnfields=feeling' + '&city=' + userCity + '&state=' + userState + '&limit=1500');
-        $xhr.done(function(data) {
+  var parser;
+  var xmlDoc;
+  var $xhr;
+  $xhr = $.get('https://g-wefeelfine.herokuapp.com/ShowFeelings?display=xml&returnfields=feeling' + '&city=' + userCity + '&state=' + userState + '&limit=1500');
+  $xhr.done(function(data) {
     if ($xhr.status !== 200) {
-        alert('uncool');
-        return;
+      alert('uncool');
+      return;
     }
     else{
       parser = new DOMParser();
@@ -133,6 +128,7 @@ function xmlToJson(xml) {
 	return obj;
 }
 
+//turns wff data json obj into obj of the 5 highest occuring feelings
 function emotionOccurance(result) {
   var feelingArr = [];
   var feelingCount = {};
@@ -175,5 +171,4 @@ function emotionOccurance(result) {
     frequentFeelings[feelings] = highestEmotions;
   }
   console.log(frequentFeelings);
-  console.log(frequentFeelings.propertyIsEnumerable());
 }
