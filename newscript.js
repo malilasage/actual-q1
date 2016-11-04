@@ -35,7 +35,8 @@ function formValidation(event) {
   else {
     window.location.assign('#map');
     map.center = codeAddress();
-    map.zoom = 8;
+    // map.zoom = 15;
+    map.setZoom(8);
     wffRequest();
   }
 }
@@ -48,7 +49,7 @@ function codeAddress() {
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
         map: map,
-        position:  results[0].geometry.location
+        position:  results[0].geometry.location,
       });
       createCircles();
     }
@@ -60,6 +61,7 @@ function codeAddress() {
 
 //make circles
 function createCircles() {
+  console.log(frequentFeelings);
   for(i = 0; i < 3; i++) {
     var cityCircle = new google.maps.Circle({
       strokeColor: '#FF0000',
