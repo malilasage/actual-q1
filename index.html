@@ -1,0 +1,90 @@
+<!-- landing page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApJmLmI194Ua_y1_TYOnU3KuL6cRErqTo&callback=initMap">
+  </script>
+  <!-- <script src="script.js"></script> -->
+  <script src="newscript.js"></script>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script>
+    // $(document).ready(wffRequest());
+  </script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Patua+One|Open+Sans">
+    <link rel="stylesheet" href="style.css">
+  <title>Feels</title>
+</head>
+<body>
+  <!-- banner -->
+  <div class="container-fluid">
+    <div class="obj-wrapper">
+    <div class="content"id="banner">
+      <img src="https://images.unsplash.com/36/yJl7OB3sSpOdEIpHhZhd_DSC_1929_1.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=d0b12826507ff039d836b23af613f4c4" class="img-responsive center-block">
+      <h3><span>I see people of various ages and sizes zip past me,  <br />  and I can’t help but feel small. <br /><h5>--29 yr old man, Chennai, India</h5></span></h3>
+      <div class="seperation"></div>
+    </div>
+    </div>
+    <!-- search -->
+    <div class="obj-wrapper">
+    <div class="content" id="search">
+      <h2><span>Explore the most written about feelings of those around you</span></h2>
+      <form action="" method="get">
+        <div>
+          <input type="text" id="city" name="cityLocation" placeholder="City"></input>
+        </div>
+        <div>
+          <input type="text" id="state" name="stateLocation" placeholder="State"></input>
+        </div>
+        <div>
+          <button type="submit" name="button">Go</button>
+        </div>
+      </form>
+      <div class="seperation"></div>
+    </div>
+  </div>
+<!-- map -->
+    <div id="map-page">
+      <div id="key">
+    <!-- key -->
+        <h5>Key</h5>
+      </div>
+      <div id="map"></div>
+      <div class="seperation"></div>
+    </div>
+
+<!-- about -->
+    <div id="about">
+      <h2><span>About</span></h2>
+      <article>
+        <p>This website utilizes We Feel Fine, a computer program which traverses the internet for blogposts in which people write about their feelings. Feelings found are gathered in a database, along with the sentences they were found in, the location of the author at the time of publication, images, and more. My project takes the location entered and shows the 5 most blogged about feelings in the location entered. etc etc As said by the creators of We Feel Fine:<cite>At its core, We Feel Fine is an artwork authored by everyone. It will grow and change as we grow and change, reflecting what's on our blogs, what's in our hearts, what's in our minds. We hope it makes the world seem a little smaller, and we hope it helps people see beauty in the everyday ups and downs of life. </cite>For more on We Feel Fine, visit:
+          <ul>
+            <li><a href="http://wefeelfine.org/mission.html" target="_blank">About</a></li>
+            <li><a href="http://wefeelfine.org/book/" target="_blank">Book</a></li>
+            <li><a href="http://wefeelfine.org/wefeelfine.pdf" target="_blank">Research</a></li>
+          </ul>
+        </p>
+        <img src="http://wefeelfine.org/common/wefeelfine.gif" alt="we feel fine logo">
+      </article>
+      <div class="seperation"></div>
+    </div>
+  <!-- footer -->
+    <div>
+      <footer>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#search">Search</a></li>
+          <li><a href="#map-page">Map</a></li>
+        </ul>
+        <p>Powered by: <a href='http://www.wefeelfine.org' target='_blank'>We Feel Fine</a>.</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
