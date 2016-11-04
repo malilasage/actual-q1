@@ -22,7 +22,7 @@ p {
 
 .seperation {
   background: black;
-  height: 50px;
+  height: 25px;
   width: 100%;
   margin: 20px 0px;
 }
@@ -39,7 +39,7 @@ li {
 .obj-wrapper {
     position:relative;
     width:100%;
-    padding-bottom: 50%;
+    padding-bottom: 80%;
     height:0;
     overflow:hidden;
   }
@@ -48,13 +48,25 @@ li {
     width:100%;
     height:100%;
   }
+
+  .container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 /*---- banner ----*/
+
+
 #banner h3 {
   position: absolute;
-  left: 0;
-  width: 100%;
-  top: 200px;
+  left: 20px;
+  /*width: 400%;*/
+  top: 55%;
   line-height: 49px;
+  letter-spacing: 1px;
+  font-size: 32px;
+
+    /*overflow: visible;*/
+    /*margin: 0px -40px;*/
 }
 span h5 {
   margin-left: 20px;
@@ -67,10 +79,12 @@ span h5 {
   margin: 5%;
   padding-bottom: 10%;
   padding-top: 10%;
+  text-align: center;
 }
 
 form {
   text-align: center;
+  margin-bottom: 20%;
 }
 
 form div{
@@ -93,23 +107,35 @@ button {
 /*----- google maps-------*/
 
 #key {
-  border: 2px white dotted;
-  background: rgba(0, 0, 0, 0.9);
-  font-size: 36px;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 24px;
   color: white;
   display: inline-block;
   float: right;
-  height: 500px;
-  width: 200px;
+  font-family: 'Open Sans';
+  padding: 20px;
+}
+
+#key h5 {
+  font-size: 36px;
 }
 
 
  #map {
-  height: 600px;
+  height: 90%;
   width: 100%;
+  top: -100px;
  }
 
  /*----- about ------*/
+div#about.content {
+  top: 2850px;
+}
+
+ .about-wrapper {
+  /*height: 800px;*/
+  /*padding-top: 900px;*/
+ }
 
 #about h2 {
   padding-right: 40px;
@@ -137,6 +163,11 @@ article img {
  }
 
 /*---- footer ----*/
+
+footer {
+  /*position: absolute;*/
+  /*bottom: 0;  */
+}
 
 footer li, footer p{
   margin: 0px 20px;

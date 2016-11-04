@@ -6,7 +6,6 @@ var userState;
 var centerPoint = {lat: 47.6062, lng: -122.3321};
 var frequentFeelings = {};
 var color = ['#F8B195', '#F67280',	'#C06C84', '#6C5B7B', '#355C7D'];
-//blue red green light-blue magenta
 
 //initialize map
 function initMap() {
@@ -36,7 +35,7 @@ function formValidation(event) {
   }
   else {
     wffRequest();
-    window.location.assign('#map');
+    window.location.assign('#map-page');
     map.center = codeAddress();
     map.setZoom(12);
   }
@@ -59,7 +58,7 @@ function codeAddress() {
   });
 }
 
-//make circles
+//make circles and legend
 function createCircles() {
   var i = 0;
   for(var obj in frequentFeelings) {
@@ -73,14 +72,25 @@ function createCircles() {
       fillOpacity: 0.35,
       map: map,
       center: map.center,
-      radius: newRadius*200
+      radius: newRadius*175
     });
     i++;
+    var key = document.getElementById('key');
+      // var type = icons[key];
+      var name = frequentFeelings[obj].feeling;
+      // var icon = type.icon;
+      var div = document.createElement('div');
+      div.innerHTML = name;
+      div.style.color = color[i];
+      key.appendChild(div);
   }
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(key);
 }
+
 //create key
 function initKey() {
-  
+  var key = document.body.getElementById('#key');
+  //append to key the emotion in the text boxes which will be labeled and have static color squares
 }
 
 //we feel fine data request
@@ -144,7 +154,7 @@ function emotionOccurance(result) {
   //returns feelings as an array
   for (var i = 0; i < result.feelings.feeling.length; i++) {
     var trueFeeling = result.feelings.feeling[i].attributes;
-    if(trueFeeling !== undefined) {
+    if(trueFeeling !== undefined && trueFeeling.feeling !== 'right') {
       feelingArr[feelingArr.length] = trueFeeling.feeling;
     }
   }
