@@ -5,6 +5,8 @@ var userCity;
 var userState;
 var centerPoint = {lat: 47.6062, lng: -122.3321};
 var frequentFeelings = {};
+var color = ['#F8B195', '#F67280',	'#C06C84', '#6C5B7B', '#355C7D'];
+//blue red green light-blue magenta
 
 //initialize map
 function initMap() {
@@ -36,8 +38,7 @@ function formValidation(event) {
     wffRequest();
     window.location.assign('#map');
     map.center = codeAddress();
-    // map.zoom = 15;
-    map.setZoom(8);
+    map.setZoom(12);
   }
 }
 
@@ -51,7 +52,6 @@ function codeAddress() {
         map: map,
         position:  results[0].geometry.location,
       });
-      // createCircles();
     }
     else {
       alert('Geocode was not successful for the following reason: ' + status);
@@ -61,20 +61,26 @@ function codeAddress() {
 
 //make circles
 function createCircles() {
+  var i = 0;
   for(var obj in frequentFeelings) {
-    // console.log(frequentFeelings[obj].frequency);
+    console.log(color[i]);
     var newRadius = frequentFeelings[obj].frequency;
     var cityCircle = new google.maps.Circle({
-      strokeColor: '#FF0000',
+      strokeColor: color[i],
       strokeOpacity: 0.8,
       strokeWeight: 2,
-      fillColor: '#FF0000',
+      fillColor: color[i],
       fillOpacity: 0.35,
       map: map,
       center: map.center,
-      radius: newRadius*1000
+      radius: newRadius*200
     });
+    i++;
   }
+}
+//create key
+function initKey() {
+  
 }
 
 //we feel fine data request
@@ -175,5 +181,4 @@ function emotionOccurance(result) {
   }
   createCircles();
   console.log(frequentFeelings);
-  // console.log(frequentFeelings.feelings0);
 }
