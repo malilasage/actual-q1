@@ -56,11 +56,28 @@ function codeAddress() {
         map: map,
         position:  results[0].geometry.location
       });
+      createCircles();
     }
     else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
   });
+}
+
+//make circles
+function createCircles() {
+  for(i = 0; i < 3; i++) {
+    var cityCircle = new google.maps.Circle({
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        map: map,
+        center: map.center,
+        radius: 100000
+    });
+  }
 }
 
 //we feel fine data request
@@ -159,4 +176,5 @@ function emotionOccurance(result) {
     frequentFeelings[feelings] = highestEmotions;
   }
   console.log(frequentFeelings);
+  console.log(frequentFeelings.propertyIsEnumerable());
 }
