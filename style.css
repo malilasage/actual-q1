@@ -114,6 +114,7 @@ button {
   float: right;
   font-family: 'Open Sans';
   padding: 20px;
+  /*visibility: hidden;*/
 }
 
 #key h5 {

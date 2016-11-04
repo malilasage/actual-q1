@@ -5,6 +5,7 @@ var userCity;
 var userState;
 var centerPoint = {lat: 47.6062, lng: -122.3321};
 var frequentFeelings = {};
+var key = document.getElementById('key');
 var color = ['#F8B195', '#F67280',	'#C06C84', '#6C5B7B', '#355C7D'];
 
 //initialize map
@@ -60,12 +61,16 @@ function codeAddress() {
 
 //make circles and legend
 function createCircles() {
+  var key = document.getElementById('key');
   var i = 0;
   var totalNum = 0;
   for (var obj in frequentFeelings) {
     var num = frequentFeelings[obj].frequency;
     totalNum += num;
     console.log(totalNum);
+  }
+  while (key.hasChildNodes()) {
+    key.removeChild(key.firstChild);
   }
   for(var obj in frequentFeelings) {
     console.log(color[i]);
@@ -80,12 +85,13 @@ function createCircles() {
       center: map.center,
       radius: newRadius*175 + 100*i
     });
-    var key = document.getElementById('key');
       // var type = icons[key];
+      // var key = document.getElementById('key');
       var name = frequentFeelings[obj].feeling;
       console.log(totalNum);
       var num = ((frequentFeelings[obj].frequency/totalNum)*100).toFixed(2);//percentage out of 100
       // var icon = type.icon;
+              // key.style.visibility = 'visible';
       var div = document.createElement('div');
       div.innerHTML = name + ": " + num + '%';
       div.style.color = color[i];
@@ -157,6 +163,7 @@ function xmlToJson(xml) {
 
 //turns wff data json obj into obj of the 5 highest occuring feelings
 function emotionOccurance(result) {
+  console.log(result);
   var feelingArr = [];
   var feelingCount = {};
   //returns feelings as an array
