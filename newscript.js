@@ -61,6 +61,12 @@ function codeAddress() {
 //make circles and legend
 function createCircles() {
   var i = 0;
+  var totalNum = 0;
+  for (var obj in frequentFeelings) {
+    var num = frequentFeelings[obj].frequency;
+    totalNum += num;
+    console.log(totalNum);
+  }
   for(var obj in frequentFeelings) {
     console.log(color[i]);
     var newRadius = frequentFeelings[obj].frequency;
@@ -77,9 +83,11 @@ function createCircles() {
     var key = document.getElementById('key');
       // var type = icons[key];
       var name = frequentFeelings[obj].feeling;
+      console.log(totalNum);
+      var num = ((frequentFeelings[obj].frequency/totalNum)*100).toFixed(2);//percentage out of 100
       // var icon = type.icon;
       var div = document.createElement('div');
-      div.innerHTML = name;
+      div.innerHTML = name + ": " + num + '%';
       div.style.color = color[i];
       key.appendChild(div);
         i++;
