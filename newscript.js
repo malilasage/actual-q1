@@ -33,11 +33,11 @@ function formValidation(event) {
     alert('nice try');
   }
   else {
+    wffRequest();
     window.location.assign('#map');
     map.center = codeAddress();
     // map.zoom = 15;
     map.setZoom(8);
-    wffRequest();
   }
 }
 
@@ -51,7 +51,7 @@ function codeAddress() {
         map: map,
         position:  results[0].geometry.location,
       });
-      createCircles();
+      // createCircles();
     }
     else {
       alert('Geocode was not successful for the following reason: ' + status);
@@ -61,8 +61,9 @@ function codeAddress() {
 
 //make circles
 function createCircles() {
-  console.log(frequentFeelings);
-  for(i = 0; i < 3; i++) {
+  for(var obj in frequentFeelings) {
+    // console.log(frequentFeelings[obj].frequency);
+    var newRadius = frequentFeelings[obj].frequency;
     var cityCircle = new google.maps.Circle({
       strokeColor: '#FF0000',
       strokeOpacity: 0.8,
@@ -71,7 +72,7 @@ function createCircles() {
       fillOpacity: 0.35,
       map: map,
       center: map.center,
-      radius: 100000
+      radius: newRadius*1000
     });
   }
 }
@@ -172,5 +173,7 @@ function emotionOccurance(result) {
     delete feelingCount[objToRemove];
     frequentFeelings[feelings] = highestEmotions;
   }
+  createCircles();
   console.log(frequentFeelings);
+  // console.log(frequentFeelings.feelings0);
 }
