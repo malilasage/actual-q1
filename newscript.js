@@ -35,9 +35,9 @@ function formValidation(event) {
   }
   else {
     wffRequest();
-    window.location.assign('#map-page');
+    window.location.assign('#map');
     map.center = codeAddress();
-    map.setZoom(12);
+    map.setZoom(13);
   }
 }
 
@@ -72,9 +72,8 @@ function createCircles() {
       fillOpacity: 0.35,
       map: map,
       center: map.center,
-      radius: newRadius*175
+      radius: newRadius*175 + 100*i
     });
-    i++;
     var key = document.getElementById('key');
       // var type = icons[key];
       var name = frequentFeelings[obj].feeling;
@@ -83,15 +82,16 @@ function createCircles() {
       div.innerHTML = name;
       div.style.color = color[i];
       key.appendChild(div);
+        i++;
   }
     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(key);
 }
 
 //create key
-function initKey() {
-  var key = document.body.getElementById('#key');
+// function initKey() {
+  // var key = document.body.getElementById('#key');
   //append to key the emotion in the text boxes which will be labeled and have static color squares
-}
+// }
 
 //we feel fine data request
 function wffRequest() {
