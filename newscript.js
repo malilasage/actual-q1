@@ -63,7 +63,6 @@ function codeAddress() {
     }
   });
 }
-
 //make circles
 function createCircles() {
   for(i = 0; i < 3; i++) {
